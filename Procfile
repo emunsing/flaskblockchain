@@ -1,1 +1,1 @@
-web: gunicorn flaskblockchain:app
+web:gunicorn flaskblockchain:app
