@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<section class="bg-info">
+	<div class="container">
+		{% if error %} <p class=error><strong>Error:</strong> {{error}} </p>{% endif %}
+		<h2>Frequently Asked Questions</h2>
+	</div>
+</section>
+
+<section>
+	<div class="container">
+
+		<h4 id="about"> What is <b>MyCompanyName</b>?</h4>
+		<p>Lorem ipsum dolor sit amet, malesuada mi, in tempor nullam nunc eros vitae, tempor vehicula libero aliquam, sollicitudin risus in, ullamcorper in wisi et. 
+		</p>
+
+		<h4> What is your tech?</h4>
+		<p> Mattis lacus vehicula sollicitudin in elit pellentesque, laoreet eleifend venenatis eget cras, magna est, amet praesent aenean eget eros porttitor, et eros aliquet ipsum faucibus feugiat. Sed lacinia suspendisse et hac ipsum, laoreet luctus nunc lectus, praesent id et suspendisse eu sodales fusce, aliquam sodales ipsum elementum massa magnis scelerisque. 
+		</p>
+
+		<p></p>
+		<br>
+		<p></p>
+		<h3> Detailed Questions</h3>
+		<h4> What happens when it breaks? </h4>
+		<p> In at duis et lectus in dolor, id congue euismod officiis magna, rutrum donec pharetra tristique vitae sem, mus enim amet at cras elit ullamcorper, urna enim egestas orci est lacinia arcu. Proin molestie et a vel sapien, mattis amet, eu etiam nunc nisl, ultricies nunc.</p>
+
+		<h4> I want my money back. </h4>
+		<p>In at duis et lectus in dolor, id congue euismod officiis magna, rutrum donec pharetra tristique vitae sem, mus enim amet at cras elit ullamcorper, urna enim egestas orci est lacinia arcu. Proin molestie et a vel sapien, mattis amet, eu etiam nunc nisl, ultricies nunc.</p>
+
+
+		</div>
+		</section>
+
+		<section class="bg-info" id="contact">
+			<div class="container">
+		<h2> How do I contact you? </h2>
+
+		<p>In at duis et lectus in dolor, id congue euismod officiis magna, rutrum donec pharetra tristique vitae sem, mus enim amet at cras elit ullamcorper, urna enim egestas orci est lacinia arcu. Proin molestie et a vel sapien, mattis amet, eu etiam nunc nisl, ultricies nunc.
+		</p>
+
+		<h4> Contact Us! </h4>
+		<p>If you have questions, you can reach us on <a href=https://twitter.com/@carbonoffsetter>Twitter @CarbonOffsetter</a> or 
+		<script type="text/javascript" language="javascript">
+		{ coded = "wWnD.E.i9RonRT@TivnY.DLi"
+		  key = "9hV01evsUNkTlzyO3MqFDSBnd8ZpXwPoIrQAYmutGjHJaCKR6gfE247LbWcx5i"
+		  shift=coded.length
+		  link=""
+		  for (i=0; i<coded.length; i++) {
+		    if (key.indexOf(coded.charAt(i))==-1) {
+		      ltr = coded.charAt(i)
+		      link += (ltr)
+		    }
+		    else {     
+		      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+		      link += (key.charAt(ltr))
+		    }
+		  }
+		document.write("<a href='mailto:"+link+"'>email Eric</a>")
+		}
+		//-->
+		</script><noscript>(woops, you need Javascript on to email me.)</noscript>
+		. We're a small scrappy team, but we'll try to get back to you as soon as possible!
+		</p>
+		</div>
+		</section>
+
+	</div>
+</section>
+
+{% endblock %}

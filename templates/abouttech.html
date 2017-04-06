@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<section class="bg-info">
+	<div class="container">
+		{% if error %} <p class=error><strong>Error:</strong> {{error}} </p>{% endif %}
+		<h2>What are Carbon Offsets?</h2>
+	</div>
+</section>
+
+<section  style="padding-top: -5em;">
+	<div class="container">
+        <p>Lorem ipsum dolor sit amet, malesuada mi, in tempor nullam nunc eros vitae, tempor vehicula libero aliquam, sollicitudin risus in, ullamcorper in wisi et. Mattis lacus vehicula sollicitudin in elit pellentesque, laoreet eleifend venenatis eget cras, magna est, amet praesent aenean eget eros porttitor, et eros aliquet ipsum faucibus feugiat. Sed lacinia suspendisse et hac ipsum, laoreet luctus nunc lectus, praesent id et suspendisse eu sodales fusce, aliquam sodales ipsum elementum massa magnis scelerisque. In at duis et lectus in dolor, id congue euismod officiis magna, rutrum donec pharetra tristique vitae sem, mus enim amet at cras elit ullamcorper, urna enim egestas orci est lacinia arcu. Proin molestie et a vel sapien, mattis amet, eu etiam nunc nisl, ultricies nunc.
+        </p>
+    </div>
+
+    <div class="jumbotron jumbo_img" style="padding-top: 5em; padding-bottom: 1em; background-image: url('{{ url_for('static', filename='img/forest_fog.jpg') }}');">
+        <div class="container">
+            <br/>
+            <h2>Our Tech is Awesome</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <p> Lorem ipsum dolor sit amet, malesuada mi, in tempor nullam nunc eros vitae, tempor vehicula libero aliquam, sollicitudin risus in, ullamcorper in wisi et. Mattis lacus vehicula sollicitudin in elit pellentesque, laoreet eleifend venenatis eget cras, magna est, amet praesent aenean eget eros porttitor, et eros aliquet ipsum faucibus feugiat. Sed lacinia suspendisse et hac ipsum, laoreet luctus nunc lectus, praesent id et suspendisse eu sodales fusce, aliquam sodales ipsum elementum massa magnis scelerisque. In at duis et lectus in dolor, id congue euismod officiis magna, rutrum donec pharetra tristique vitae sem, mus enim amet at cras elit ullamcorper, urna enim egestas orci est lacinia arcu. Proin molestie et a vel sapien, mattis amet, eu etiam nunc nisl, ultricies nunc.</p>
+    </div>
+
+</section>
+
+{% endblock %}
