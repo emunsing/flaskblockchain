@@ -1,9 +1,12 @@
 class Config(object):
+	HEROKU = False
 	DEBUG = False
 	TESTING = False
 	CSRF_ENABLED = True
 
+
 class HerokuConfig(Config):
+	HEROKU      = True
 	DEVELOPMENT = False
 	DEBUG       = False
 	ETHEREUM    = False

@@ -1,0 +1,132 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <header>
+    <!-- There's a limit to how much content can go here- check resizing! -->
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div></div>
+                <h1 id="homeHeading">Cool tech made simple.</h1>
+                <hr>
+                <p>We do awesome things so you don't have to.</p>
+                <a href="{{url_for('takeaction')}}" class="btn btn-primary btn-xl page-scroll">Take Action</a>
+                <p> </p>
+                <hr>
+                <div class="row">
+                    <p> Learn more about <a style="color:inherit;" href="#services">our story</a> and <a style="color:inherit;" href="#offsets">our technology</a> below.</p><h1><span class="glyphicon glyphicon-menu-down"></span></h1>
+                </div>
+        </div>
+    </header>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">40% of boredom happens at home. We can change that.</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-4 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-envira text-primary sr-icons"></i>
+                        <h3>Do Something Great.</h3>
+                        <p class="text-muted">Mattis lacus vehicula sollicitudin in elit pellentesque, laoreet eleifend venenatis eget cras, magna est, amet praesent aenean eget eros porttitor, et eros aliquet ipsum faucibus feugiat.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                        <h3>We'll Make it Easy.</h3>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, malesuada mi, in tempor nullam nunc eros vitae, tempor vehicula libero aliquam, sollicitudin risus in, ullamcorper in wisi et.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+                        <h3>Get on with Life</h3>
+                        <p class="text-muted">In at duis et lectus in dolor, id congue euismod officiis magna, rutrum donec pharetra tristique vitae sem, mus enim amet at cras elit ullamcorper, urna enim egestas orci est lacinia arcu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div id="offsets" class="jumbotron jumbo_img" style="background-image: url('{{ url_for('static', filename='img/forest_fog.jpg') }}');">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-7">
+           <h2>We do Cool Stuff</h2>
+            <h2>With Your Data.</h2>
+            <p class="lead" id="peepslead"> In at duis et lectus in dolor, id congue euismod officiis magna, rutrum donec pharetra tristique vitae sem, mus enim amet at cras elit ullamcorper, urna enim egestas orci est lacinia arcu.</p>
+            <a href="{{url_for('abouttech')}}" class="btn btn-info">Learn More about our Tech</a>
+        </div>
+        <div class="col-sm-4">
+        </div>
+    </div>
+</div>
+
+<div id="story" class="jumbotron jumbo_img" style="background-image: url('{{ url_for('static', filename='img/treesandPeeps3.jpg') }}');">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-6">
+           <h2>We Love Coding.</h2>
+            <h2>And Customers.</h2>
+            <p class="lead" id="peepslead"> We're two generic white guys who mistakenly thought we could change the world.</p>
+            <a href="{{url_for('about')}}" class="btn btn-info">Read Our Story</a>
+        </div>
+        <div class="col-sm-5">
+        </div>
+    </div>
+</div>
+
+    <section class="no-padding" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p></p>
+                    <h2 class="section-heading">Background Info</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-6 col-sm-6">
+                    <a href="{{ url_for('blog1')}}" class="portfolio-box">
+                        <img src="{{ url_for('static', filename='img/portfolio/thumbnails/1.jpg')}}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Blog
+                                </div>
+                                <div class="project-name">
+                                    Features Galore
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <a href="{{ url_for('blog2')}}" class="portfolio-box">
+                        <img src="{{ url_for('static', filename='img/portfolio/thumbnails/3.jpg')}}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Blog
+                                </div>
+                                <div class="project-name">
+                                    More Awesomeness?
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
