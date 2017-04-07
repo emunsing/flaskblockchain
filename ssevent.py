@@ -4,12 +4,25 @@ from gevent.queue import Queue
 
 from flask import Flask, Response
 
-import time, os
+import time, os, sys, threading
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 subscriptions = []
 
+def notify():
+    print("I got notified!")
+    msg = str(time.time())
+    for sub in subscriptions[:]:
+        sub.put(msg)
+
+def checkForNewData(n=5):
+    while True:
+        try:
+            gevent.sleep(n)
+            notify()
+        except GreenletExit:
+            print("loop exited!")
 
 
 # SSE "protocol" is described here: http://mzl.la/UPFyxY
@@ -63,38 +76,36 @@ def index():
 def debug():
     return "Currently %d subscriptions" % len(subscriptions)
 
-@app.route("/publish")
-def publish():
-    #Dummy data - pick up from request for real data
-    def notify():
-        msg = str(time.time())
-        for sub in subscriptions[:]:
-            sub.put(msg)
-    
-    gevent.spawn(notify)
-    
-    return "OK"
-
 @app.route("/subscribe")
 def subscribe():
-    def gen():
+    def gen():  # When this function is run, a subscription is added to the queue and 
         q = Queue()
         subscriptions.append(q)
         try:
             while True:
-                result = q.get()
+                result = q.get()  # This will block until an item is available, then loop around and wait for the next item to pop into the queue
                 ev = ServerSentEvent(str(result))
                 yield ev.encode()
         except GeneratorExit: # Or maybe use flask signals
             subscriptions.remove(q)
-
+            print("Generator exited!")
     return Response(gen(), mimetype="text/event-stream")
 
+@app.route("/publish")
+def publish():
+    #Dummy data - pick up from request for real data    
+    gevent.spawn(notify)
+    
+    return "OK"
+
 if __name__ == "__main__":
-    # app.run(debug=True, serve_forever=True)
+
     if app.config['HEROKU']:
         app.run(debug=True)
     else:
+        if app.config['ETHEREUM']:
+            gevent.Greenlet.spawn(checkForNewData)
+            
         app.debug = True
         server = WSGIServer(("", 5000), app)
         server.serve_forever()

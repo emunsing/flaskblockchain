@@ -18,6 +18,7 @@
         </div>
     </header>
 
+
     <section id="services">
         <div class="container">
             <div class="row">
@@ -49,6 +50,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h1>Awesome Power Flow Simulation</h1>
+            <p>Bounce between <input class="numberinput" type=text size=5 value=5 name=a> and 
+               <input class="numberinput" type=text size=5 value=0 name=b>
+               <span id=result>0</span>
+            <p><a href=# id=calculate>Update Computations</a>
         </div>
     </section>
 
@@ -128,5 +139,63 @@
         </div>
     </section>
 
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+    var hourNumber = 0;
+    var simulationData = ['A', 'B', 'C', 'D', 'E'];
+    var timeout = 1000;
+
+    // Repeatedly update the visualization, stepping through hours of the day
+    function updateViz(){   
+        $("#result").text(simulationData[hourNumber]);
+        if (++hourNumber >= simulationData.length)
+            hourNumber = 0
+    }
+    setInterval(updateViz,timeout);  // Set the visualization to run automatically
+
+    // Handle update messages from the back-end
+    var eventOutputContainer = document.getElementById("event");
+    var evtSrc = new EventSource("/subscribe");
+
+    evtSrc.onmessage = function(e) {
+        console.log(e.data);
+        eventOutputContainer.innerHTML = e.data;
+     };
+
+    // Main functionality
+    function getValOr0(namestring){
+        x = $(namestring).val();
+        if(x==""){
+            return "0";
+        }else{
+            return x;
+        }
+    }
+
+    // For updates in response to user input
+    function updateBackend(){
+        // .getJSON(url,payload,callback)  sends payload to url, then calls callback with new data
+        $.getJSON($SCRIPT_ROOT + '/_update_backend', 
+            {
+                a: getValOr0('input[name="a"]'),
+                b: getValOr0('input[name="b"]')
+            }, 
+            function(data) {
+                console.log(data.result)
+                simulationData = data.result
+                //$("#result").text(data.result[ data.result.length-1 ]+1);
+            }
+        );
+        return false;
+    }
+
+    // Load bindings once document loads
+    $(function() {
+        $('.numberinput').bind('input',updateBackend);
+        $('a#calculate').bind('click', updateBackend);
+    });
+
+</script>
 
 {% endblock %}
