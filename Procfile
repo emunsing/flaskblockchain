@@ -1,1 +1,1 @@
-web: gunicorn ssevent:app --worker-class gevent
+web: gunicorn flaskblockchain:app --worker-class gevent
