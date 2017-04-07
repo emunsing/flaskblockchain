@@ -3,14 +3,14 @@ class Config(object):
 	DEBUG = False
 	TESTING = False
 	CSRF_ENABLED = True
-
+	ETHNETWORK = False
 
 class HerokuConfig(Config):
 	HEROKU      = True
 	DEVELOPMENT = False
 	DEBUG       = False
 	ETHEREUM    = False
-	ETJMETWPRL  = False
+	ETHNETWORK  = False
 
 class LocalNoEthereum(Config):
 	DEVELOPMENT = True
@@ -23,3 +23,9 @@ class LocalEthereumNoNetwork(Config):
 	DEBUG       = True
 	ETHEREUM    = True
 	ETHNETWORK  = False
+
+class LocalEthereumNetwork(Config):
+	DEVELOPMENT = True
+	DEBUG       = True
+	ETHEREUM    = True
+	ETHNETWORK  = True

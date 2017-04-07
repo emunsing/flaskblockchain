@@ -1,12 +1,5 @@
 # SETUP
 
-## Setting up Heroku (one-time)
-This assumes that you're using the command line:
-- Create app with `$ heroku create myawesomeapp` where your actual app name replaces `myawesomeapp`
-- Set environment with `$ heroku config:set APP_SETTINGS=config.HerokuConfig`
-- Set buildpack with `$heroku buildpacks:set heroku/python`
-- Set dyno scale with `$ heroku ps:scale web=1`
-
 
 ## Local setup
 
@@ -14,8 +7,8 @@ This assumes that you're using the command line:
 - Create virtual environment by running `$ virtualenv env`
 - Set environment variables by running  `$ source .env`
 - Install required Python packages with `$ pip install -r requirements.txt
-- Associate heroku repository by running`$ git remote add stage git@heroku.com:myawesomapp.git`
-- Run a local server with `$ python myaweseomapp.py`
+- Associate heroku repository by running`$ git remote add heroku git@heroku.com:flaskblockchain.git`
+- Run a local server with `$ python flaskblockchain.py`
 - Go to http://localhost:5000 and see results!
 
 
@@ -34,3 +27,10 @@ Required for Heroku:
 
 When creating a new app...
 - In addition to installing Flask and other requirements, be sure to install 
+
+## Setting up Heroku (one-time; should be done)
+This assumes that you're using the command line:
+- Create app with `$ heroku create myawesomeapp` where your actual app name replaces `myawesomeapp`
+- Set environment with `$ heroku config:set APP_SETTINGS=config.HerokuConfig`
+- Set buildpack with `$heroku buildpacks:set heroku/python`
+- Set dyno scale with `$ heroku ps:scale web=1`

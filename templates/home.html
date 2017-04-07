@@ -55,10 +55,10 @@
 
     <section>
         <div class="container">
-            <h1>Awesome Power Flow Simulation</h1>
-            <p>Bounce between <input class="numberinput" type=text size=5 value=5 name=a> and 
-               <input class="numberinput" type=text size=5 value=0 name=b>
-               <span id=result>0</span>
+            <h1>Awesome Power Flow Simulation</h1><div id="event"></div>
+            <p>Run through the ABCs between letter <input class="numberinput" type=text size=1 value=1 name=a> and 
+               <input class="numberinput" type=text size=5 value=5 name=b>
+               <span style="padding-left:5em" id=result>0</span>
             <p><a href=# id=calculate>Update Computations</a>
         </div>
     </section>
@@ -160,7 +160,9 @@
 
     evtSrc.onmessage = function(e) {
         console.log(e.data);
-        eventOutputContainer.innerHTML = e.data;
+        console.log(typeof(e.data))
+        simulationData = JSON.parse(e.data)['result'];
+        console.log(typeof(simulationData))
      };
 
     // Main functionality
